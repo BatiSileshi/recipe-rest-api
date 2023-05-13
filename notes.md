@@ -46,3 +46,16 @@ iii. back to github and goto settings -> secrets then add DOCKERHUB_USER and DOC
 
 9. start service by using [ docker-compose up]
 
+
+
+# GITHUB ACTIONS
+- USED for deployment, unit testing and linting
+-> how it works  
+   i. trigger (pushing to github)
+   ii. Job (e.g. run unit test)
+   iii. Result (successful)
+
+### steps to create github actions
+ - create folder [.github] in root directory
+ - create folder [.github/workflow]
+ - create file [.github/workflow/checks.yml]
