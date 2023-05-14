@@ -16,3 +16,24 @@ services:
       - ./recipe-app:/recipe-app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    #telling recipe-app how to connect to db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=recipedb
+      - DB_USER=user 
+      - DB_PASS=password
+    depends_on:
+      - db
+
+  # adding db service
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=recipedb
+      - POSTGRES_USER=user 
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  dev-db-data:

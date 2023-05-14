@@ -16,9 +16,17 @@ EXPOSE 8000
 ARG DEV=false
 RUN python3 -m venv /py
 RUN /py/bin/pip install --upgrade pip 
+# for psycopg2
+RUN apk add --update --no-cache postgresql-client
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+   build-base postgresql-dev musl-dev
+# end fro psycopg2
 RUN /py/bin/pip install -r /tmp/requirements.txt \
    && if [ $DEV = "true" ]; then /py/bin/pip install -r /tmp/requirements.dev.txt ; fi 
 RUN rm -rf /tmp
+# for psycopg2 (deleting created tmp-build-deps)
+RUN apk del .tmp-build-deps
+
 RUN adduser --disabled-password --no-create-home django-user
 
 # when we run a command it will run from our virtual env't 

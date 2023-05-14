@@ -59,3 +59,18 @@ iii. back to github and goto settings -> secrets then add DOCKERHUB_USER and DOC
  - create folder [.github] in root directory
  - create folder [.github/workflow]
  - create file [.github/workflow/checks.yml]
+
+
+
+
+
+
+
+ # TESTING IN DJANGO
+
+
+
+10. adding db service to docker-compose.yml file
+11. configuring db with django (install psycopg2 for postgresql db)
+12. install postgresql adapter (psycopg2) - we add some line into Dockerfile then updating requirements.txt and then run [docker-compose build]
+13. configure db into settings.py
